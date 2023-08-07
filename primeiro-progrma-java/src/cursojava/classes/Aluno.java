@@ -3,17 +3,11 @@ package cursojava.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import cursojava.classes.heranca.Pessoa;
 import cursojava.constantes.StatusAluno;
 
-public class Aluno {
+public class Aluno extends Pessoa {
 			
-		private String nome;
-		private int idade;
-		private String dataNascimento;
-		private String registoGeral;
-		private String cpf;
-		private String nomeMae;
-		private String nomePai;
 		private String dataMatricula;
 		private String nomeEscola;
 		private String serieMatriculado;
@@ -177,8 +171,20 @@ public class Aluno {
 			return true;
 		}
 		
+		@Override /*Identifica metodo sobreescrito*/
+		public boolean pessoaMaiorIdade() {
+						
+			return idade >= 21;
+		}
 		
-	
+		public String msgMaiorIdade() {
+			return this.pessoaMaiorIdade() ? "Obaa, aluno é maior de idade" : "Ixiii, vc é menonr de idade";
+		}
+		@Override
+		public double salario() {
+			
+			return 1500.90;
+		}
 		
 	}
 

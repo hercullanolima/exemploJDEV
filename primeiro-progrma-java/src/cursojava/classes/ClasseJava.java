@@ -6,16 +6,21 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import cursojava.classes.heranca.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
+import cursojava.interfaces.PermitirAcesso;
 
 public class ClasseJava {
+	
+	@SuppressWarnings("rawtypes")
 public static void main(String[] args) {
 	
 	String login = JOptionPane.showInputDialog("Informe o Login!");
 	String senha = JOptionPane.showInputDialog("Informe a Senha!");
 	
 	/*Criando validação de acesso*/
-	if(login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
+	if(new FuncaoAutenticacao(new Secretario(login, senha)).autenticar()) {/*Traando para autorizar somente quem realmente tem o contrato de acesso*/
 		
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		
@@ -114,6 +119,8 @@ public static void main(String[] args) {
 		}
 		
 		
+	}else {
+		JOptionPane.showConfirmDialog(null, "Acesso não permitido!");
 	}
 }
 }
